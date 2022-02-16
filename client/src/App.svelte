@@ -1,25 +1,15 @@
 <script>
-	import { Router, Route, Link } from "svelte-navigator";
-	import Home from "./components/Home/Home.svelte";
+  import Router from "svelte-spa-router";
+  import Home from "./components/Home/Home.svelte";
+  let routes = {
+    "/": Home,
+  };
 </script>
 
-<Router>
-	<header>
-		<h1>Svelte</h1>
+<nav>
+  <a href="#/">Home</a>
+</nav>
 
-		<nav>
-			<Link to="/">Home</Link>
-			<Link to="test">Test</Link>
-		</nav>
-	</header>
-
-	<main>
-		<Route path="/" primary={false}>
-			<Home />
-		</Route>
-		<Route path="test">
-			<h1>Home</h1>
-		</Route>
-		
-	</main>
-</Router>
+<main>
+  <Router {routes} />
+</main>
