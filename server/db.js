@@ -31,7 +31,7 @@ db.createCollection('events', {
     validator: {
         $jsonSchema: {
             bsonType: "object",
-            required: ["recordId", "idOrganizer", "dateEvent", "visibility"],
+            required: ["recordId", "idOrganizer", "dateEvent", "visibility", "isActive"],
             properties: {
                 recordId: {
                     bsonType: "string"
@@ -46,16 +46,7 @@ db.createCollection('events', {
                     bsonType: "bool"
                 },
                 participants: {
-                    bsonType: "object",
-                    required: [],
-                    properties: {
-                        memberId: {
-                            bsonType: "objectId"
-                        },
-                        status: {
-                            bsonType: "string" //  pending, accepted, refused
-                        }
-                    }
+                    bsonType: "array",
                 },
                 isActive: {
                     bsonType: "bool"
