@@ -1,21 +1,25 @@
 <script>
-	import { onMount } from "svelte";
-	let test;
-
-	onMount(async () => {
-		const res = await fetch(
-			"https://public.opendatasoft.com/api/records/1.0/search/?dataset=evenements-publics-cibul"
-		);
-		const response = await res.json();
-		console.log(response);
-		test = response;
-	});
+	import { Router, Route, Link } from "svelte-navigator";
+	import Home from "./components/Home/Home.svelte";
 </script>
 
-{#if test !== undefined}
-	<div>
-		{#each test.records as record}
-			<p>{record.fields.title}</p>
-		{/each}
-	</div>
-{/if}
+<Router>
+	<header>
+		<h1>Svelte</h1>
+
+		<nav>
+			<Link to="/">Home</Link>
+			<Link to="test">Test</Link>
+		</nav>
+	</header>
+
+	<main>
+		<Route path="/" primary={false}>
+			<Home />
+		</Route>
+		<Route path="test">
+			<h1>Home</h1>
+		</Route>
+		
+	</main>
+</Router>
