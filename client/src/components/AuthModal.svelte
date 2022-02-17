@@ -10,13 +10,12 @@
 
 <svelte:window
   on:keydown={(e) => {
-    if (e.key === "Escape") {
+    if (e.key === "Escape" && shown === true) {
       hide();
     }
   }}
   on:click={(e) => {
-    console.log(e);
-    if (e.target.className.match("modal-wrapper")) {
+    if (e.target.className.match("modal-wrapper") && shown === true) {
       hide();
     }
   }}
