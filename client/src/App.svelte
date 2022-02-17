@@ -1,15 +1,14 @@
 <script>
   import Router from "svelte-spa-router";
-  import Home from "./components/Home/Home.svelte";
+  import Header from "./components/Header.svelte";
+  import HomeBody from "./components/HomeBody.svelte";
+  import LostPage from "./components/404.svelte";
+
   let routes = {
-    "/": Home,
+    "/": HomeBody,
+    "*": LostPage,
   };
 </script>
 
-<nav>
-  <a href="#/">Home</a>
-</nav>
-
-<main>
-  <Router {routes} />
-</main>
+<Header />
+<Router {routes} />
