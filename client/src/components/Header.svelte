@@ -3,15 +3,20 @@
 </script>
 
 <header>
-  <div class="logo" />
-  <Connexion on:auth={(e) => console.log(e)} />
+  <a href="#/" class="logo">logo</a>
+  <Connexion />
 </header>
 
 <style>
+  header {
+    margin: auto;
+  }
+
   .logo {
     width: 50px;
     height: 50px;
     background-color: black;
+    color: white;
   }
 
   header {
