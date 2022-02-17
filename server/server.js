@@ -17,9 +17,20 @@ app.get('/api', (req, res) => {
 	res.send("Bienvenue sur l'api du projet My_Events de la Team Lama")
 })
 
-app.get('/api/events', (req, res) => {
-	const token = generateAccessToken('lol@me.fr')
-	res.json(token)
+app.get('/api/connect/:token?', (req, res) => {
+	if (req.params.token) {
+		jwt.verify(req.params.token, process.env.TOKEN_SECRET, function (err, decoded) {
+			if (err) {
+				res.json(err)
+			}
+			const token = generateAccessToken(decoded.email)
+			res.json({ token: token })
+		});
+	} else {
+		let email = req.query.email
+		const token = generateAccessToken(email)
+		res.json({token: token})
+	}
 })
 
 app.get('*', (req, res) => {
@@ -31,5 +42,5 @@ app.listen(port, () => {
 });
 
 function generateAccessToken(email) {
-	return jwt.sign({email: email}, process.env.TOKEN_SECRET, { expiresIn: "2 days"});
+	return jwt.sign({ email: email }, process.env.TOKEN_SECRET, { expiresIn: "60s" });
 }
