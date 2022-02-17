@@ -1,11 +1,13 @@
 <script>
   import Menu from "./Menu.svelte";
+  import DisplayEvents from "./callApi.svelte";
 </script>
 
 <main>
   <Menu />
+  <h2>Events à venir</h2>
   <div class="events">
-    <h2>Events à venir</h2>
+    <DisplayEvents />
   </div>
 </main>
 
@@ -19,5 +21,6 @@
   }
   .events {
     padding: 1em;
+    overflow: scroll;
   }
 </style>
