@@ -37,6 +37,7 @@
     height: 100%;
     top: 0;
     left: 0;
+    z-index: 1;
   }
   .modal {
     background-color: white;
@@ -44,7 +45,6 @@
     padding: 1rem;
     margin: 15% auto;
     border-radius: 30px;
-    z-index: 1;
   }
   .close {
     float: right;
